@@ -9,7 +9,6 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.5.3.Final/dce418bedafd71ff8dd2cef15006c0fee788b073/mapstruct-processor-1.5.3.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/2.7.5/spring-boot-configuration-processor-2.7.5.jar" />
         </processorPath>
-        <module name="kotlin-multi.app.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
