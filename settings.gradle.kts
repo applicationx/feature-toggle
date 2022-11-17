@@ -15,15 +15,21 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-/*
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "org.springframework.boot") {
-                useModule("org.springframework.boot:spring-boot-gradle-plugin:${requested.version}")
-            }
+
+
+plugins {
+    id("com.gradle.enterprise") version("3.9")
+}
+
+gradleEnterprise {
+    if (System.getenv("CI") != null) {
+        buildScan {
+            publishAlways()
+            termsOfServiceUrl = "https://gradle.com/terms-of-service"
+            termsOfServiceAgree = "yes"
         }
     }
 }
- */
+
 rootProject.name = "kotlin-multi"
 include("app", "list", "utilities")
