@@ -6,7 +6,7 @@ import nu.handlar.toggle.app.api.model.Feature;
 import nu.handlar.toggle.rest.model.ApiFeature;
 
 @Mapper(componentModel = "spring")
-public interface FeatureMapper {
+public interface DomainFeatureMapper {
 
 	ApiFeature toApi(Feature domain);
 }

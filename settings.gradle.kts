@@ -31,5 +31,5 @@ gradleEnterprise {
     }
 }
 
-rootProject.name = "kotlin-multi"
+rootProject.name = "feature-toggle"
 include("app", "app-api", "rest")

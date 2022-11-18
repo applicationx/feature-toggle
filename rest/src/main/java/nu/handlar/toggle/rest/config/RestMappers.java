@@ -6,7 +6,7 @@ import lombok.Data;
 import nu.handlar.toggle.app.api.model.Feature;
 import nu.handlar.toggle.rest.mapper.ApiCreateFeatureMapper;
 import nu.handlar.toggle.rest.mapper.ApiFeatureMapper;
-import nu.handlar.toggle.rest.mapper.FeatureMapper;
+import nu.handlar.toggle.rest.mapper.DomainFeatureMapper;
 import nu.handlar.toggle.rest.mapper.factory.FeatureFactory;
 import nu.handlar.toggle.rest.model.ApiCreateFeature;
 import nu.handlar.toggle.rest.model.ApiFeature;
@@ -20,7 +20,7 @@ public class RestMappers {
 
 	private final FeatureFactory featureFactory;
 
-	private final FeatureMapper featureMapper;
+	private final DomainFeatureMapper domainFeatureMapper;
 
 
 	public Feature toDomain(ApiFeature api) {
@@ -32,7 +32,7 @@ public class RestMappers {
 	}
 
 	public ApiFeature toApi(Feature domain) {
-		return featureMapper.toApi(domain);
+		return domainFeatureMapper.toApi(domain);
 	}
 
 	public Feature create(String id, ApiUpdateFeature apiUpdateFeature) {
