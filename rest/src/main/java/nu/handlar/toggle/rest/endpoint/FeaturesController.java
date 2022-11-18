@@ -1,4 +1,4 @@
-package nu.handlar.toggle.app;
+package nu.handlar.toggle.rest.endpoint;
 
 import java.util.Objects;
 
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import nu.handlar.toggle.app.config.DomainMappers;
-import nu.handlar.toggle.app.model.api.ApiCreateFeature;
-import nu.handlar.toggle.app.model.api.ApiFeature;
-import nu.handlar.toggle.app.model.api.ApiUpdateFeature;
+import nu.handlar.toggle.rest.config.RestMappers;
+import nu.handlar.toggle.rest.model.ApiCreateFeature;
+import nu.handlar.toggle.rest.model.ApiFeature;
+import nu.handlar.toggle.rest.model.ApiUpdateFeature;
 import nu.handlar.toggle.app.api.model.Feature;
-import nu.handlar.toggle.app.service.FeatureService;
+import nu.handlar.toggle.app.api.service.FeatureService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -28,10 +28,10 @@ import reactor.core.publisher.Mono;
 @RequestMapping(path = "/features")
 public class FeaturesController {
 
-	private final DomainMappers mappers;
+	private final RestMappers mappers;
 	private final FeatureService domain;
 
-	public FeaturesController(DomainMappers mappers, FeatureService domain) {
+	public FeaturesController(RestMappers mappers, FeatureService domain) {
 		this.mappers = Objects.requireNonNull(mappers, "mappers");
 		this.domain = Objects.requireNonNull(domain, "domain");
 	}

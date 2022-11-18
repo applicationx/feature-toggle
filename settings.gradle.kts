@@ -32,4 +32,4 @@ gradleEnterprise {
 }
 
 rootProject.name = "kotlin-multi"
-include("app", "app-api", "utilities")
+include("app", "app-api", "rest")

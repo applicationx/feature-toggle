@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
+import nu.handlar.toggle.app.api.service.FeatureService;
 import nu.handlar.toggle.app.config.DomainMappers;
 import nu.handlar.toggle.app.error.FeatureAlreadyExistsException;
 import nu.handlar.toggle.app.error.FeatureNotFoundException;
@@ -13,16 +14,17 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class FeatureService {
+public class FeatureServiceImpl implements FeatureService {
 
 	private final DomainMappers mappers;
 	private final FeaturesRepository repository;
 
-	public FeatureService(DomainMappers mappers, FeaturesRepository repository) {
+	public FeatureServiceImpl(DomainMappers mappers, FeaturesRepository repository) {
 		this.mappers = Objects.requireNonNull(mappers, "mappers");
 		this.repository = Objects.requireNonNull(repository, "repository");
 	}
 
+	@Override
 	public Mono<Feature> save(Feature feature) {
 		return repository.findById(feature.getId())
 				.map(dao -> {
@@ -36,15 +38,18 @@ public class FeatureService {
 						.map(mappers::toDomain));
 	}
 
+	@Override
 	public Flux<Feature> findAll() {
 		return repository.findAll()
 				.map(mappers::toDomain);
 	}
 
+	@Override
 	public Mono<Void> deleteById(String id) {
 		return repository.deleteById(id);
 	}
 
+	@Override
 	public Mono<Feature> update(Feature feature) {
 		return repository.findById(feature.getId())
 				.switchIfEmpty(Mono.error(new FeatureNotFoundException("Unable to find feature {}".replace("{}", feature.getId().toString()))))
@@ -53,6 +58,7 @@ public class FeatureService {
 				.map(mappers::toDomain);
 	}
 
+	@Override
 	public Mono<Feature> findById(String id) {
 		return repository.findById(id)
 				.map(mappers::toDomain);

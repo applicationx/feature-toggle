@@ -1,4 +1,4 @@
-package nu.handlar.toggle.app.model.api;
+package nu.handlar.toggle.rest.model;
 
 public interface HasIdType <T> {
 

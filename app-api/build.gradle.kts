@@ -5,6 +5,6 @@ plugins {
 
 
 dependencies {
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+    implementation("io.projectreactor:reactor-core")
+
 }

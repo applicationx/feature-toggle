@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":app-api"))
-    implementation(project(":utilities"))
+    implementation(project(":rest"))
 
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
