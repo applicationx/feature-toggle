@@ -1,12 +1,11 @@
 plugins {
-    // Support convention plugins written in Kotlin. Convention plugins are build scripts in 'src/main' that automatically become available as plugins in the main build.
-//    id("org.springframework.boot") version "2.7.5" apply false
+    id("org.springframework.boot") version "2.7.5" apply false
     id("io.spring.dependency-management") version "1.0.15.RELEASE" apply true
-//    kotlin("plugin.spring") version "1.3.50" apply false
     `kotlin-dsl`
 }
-
+val springBootVersion:String by project
 dependencies {
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.7.5")
     implementation("io.spring.gradle:dependency-management-plugin:1.0.15.RELEASE")
 }
 

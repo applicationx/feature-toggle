@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import nu.handlar.toggle.app.config.DomainMappers;
 import nu.handlar.toggle.app.error.FeatureAlreadyExistsException;
 import nu.handlar.toggle.app.error.FeatureNotFoundException;
-import nu.handlar.toggle.app.model.domain.Feature;
+import nu.handlar.toggle.app.api.model.Feature;
 import nu.handlar.toggle.app.repository.FeaturesRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

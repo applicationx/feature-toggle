@@ -1,25 +1,10 @@
 plugins {
     id("se.handlar.toggle.java-application-conventions")
     id("org.springframework.boot")
-//    id("io.spring.dependency-management")
 }
-dependencyManagement {
-    imports {
-        val springCloudVersion:String by project
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
-    }
-}
-/*
-configurations {
-    compileOnly {
-        extendsFrom(annotationProcessor.get())
-    }
-}
-
- */
 
 dependencies {
+    implementation(project(":app-api"))
     implementation("org.apache.commons:commons-text")
     implementation(project(":utilities"))
     compileOnly("org.projectlombok:lombok")
@@ -41,8 +26,3 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
 
 }
-
-//application {
-//    // Define the main class for the application.
-//    mainClass.set("se.handlar.toggle.app.App")
-//}

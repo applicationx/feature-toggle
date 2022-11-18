@@ -1,4 +1,4 @@
-package nu.handlar.toggle.app.model.domain;
+package nu.handlar.toggle.app.api.model;
 
 import lombok.Builder;
 import lombok.Data;

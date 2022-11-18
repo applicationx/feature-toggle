@@ -19,7 +19,7 @@ import nu.handlar.toggle.app.config.DomainMappers;
 import nu.handlar.toggle.app.model.api.ApiCreateFeature;
 import nu.handlar.toggle.app.model.api.ApiFeature;
 import nu.handlar.toggle.app.model.api.ApiUpdateFeature;
-import nu.handlar.toggle.app.model.domain.Feature;
+import nu.handlar.toggle.app.api.model.Feature;
 import nu.handlar.toggle.app.service.FeatureService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

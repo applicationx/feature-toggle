@@ -3,8 +3,6 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-//apply(plugin = "io.spring.dependency-management")
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -19,15 +17,21 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+dependencyManagement {
+    imports {
+        val springCloudVersion:String by project
+        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    }
+}
+
 dependencies {
 
     constraints {
         val mapstructVersion:String by project
-        val springCloudVersion:String by project
         implementation("org.mapstruct:mapstruct:1.5.3.Final")
         annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
         implementation("org.apache.commons:commons-text:1.9")
-        //implementation(platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
     }
 }
 
