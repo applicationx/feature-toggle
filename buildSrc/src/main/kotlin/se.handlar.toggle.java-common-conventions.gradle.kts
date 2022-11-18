@@ -33,6 +33,14 @@ dependencies {
         annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
         implementation("org.apache.commons:commons-text:1.9")
     }
+
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+//    implementation("org.mapstruct:mapstruct:1.5.3.Final")
+//    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
+    implementation("org.mapstruct:mapstruct")
+    annotationProcessor("org.mapstruct:mapstruct-processor")
+
 }
 
 
