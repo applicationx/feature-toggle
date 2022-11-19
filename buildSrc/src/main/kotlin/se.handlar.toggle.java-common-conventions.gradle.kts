@@ -18,28 +18,20 @@ java {
 }
 
 dependencyManagement {
+    val springCloudVersion:String by project
+
     imports {
-        val springCloudVersion:String by project
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
-    }
+      mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+      mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+  }
 }
 
 dependencies {
-
-    constraints {
-        val mapstructVersion:String by project
-        implementation("org.mapstruct:mapstruct:1.5.3.Final")
-        annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
-        implementation("org.apache.commons:commons-text:1.9")
-    }
-
+    val mapstructVersion: String by project
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-//    implementation("org.mapstruct:mapstruct:1.5.3.Final")
-//    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
-    implementation("org.mapstruct:mapstruct")
-    annotationProcessor("org.mapstruct:mapstruct-processor")
+    implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
 }
 

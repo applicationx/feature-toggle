@@ -12,5 +12,6 @@ public class Feature {
 	@NonNull
 	private final String id;
 	private final String description;
-	private final Boolean enabled;
+	@Builder.Default
+	private final Boolean enabled = true;
 }
