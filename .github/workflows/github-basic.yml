@@ -59,5 +59,24 @@ jobs:
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-      - name: Publish
-        run: ./gradlew publish
+      - name: Login to Artifact Registry
+        uses: docker/login-action@v1
+        with:
+          registry: europe-north1-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+
+      - name: Get Project Name
+        id: project-name
+        run: ./gradlew properties --no-daemon --console=plain |grep "^name:" |awk '{printf $2}'
+
+      - name: Get Project Version
+        id: project-version
+        run: ./gradlew properties --no-daemon --console=plain |grep "^version:" |awk '{printf $2}'
+
+      - name: Build and push to Google Artifact Repository
+        uses: docker/build-push-action@v2
+        with:
+          context: ./app/docker
+          push: true
+          tags: ${{secrets.GOOGLE_DEFAULT_REGION }}-docker-pkg.dev/${{ secrets.GOOGLE_PROJECT_NAME }}/${{ steps.project-name }}:${{ steps.project-version }}

@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+
 plugins {
     id("se.handlar.toggle.java-application-conventions")
     id("org.springframework.boot")
@@ -21,12 +23,6 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
 }
 
-
-repositories {
-    maven {
-        url = uri("artifactregistry://europe-north1-maven.pkg.dev/upbeat-arch-369008/appx-labs-maven-snapshot")
-    }
-    maven {
-        url = uri("artifactregistry://europe-north1-maven.pkg.dev/upbeat-arch-369008/appx-labs-maven-release")
-    }
+tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    this.archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
 }
