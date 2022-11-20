@@ -16,3 +16,14 @@ Written with technologies:
 
 To run locally you need to start `docker/mongo.yml`by typing `docker-compose mongo.yml`. 
 This will start mongo on port 27017. 
+
+### Next step
+* To call rest endpoints from other java Spring Boot projects im considering exposing RestApi interface and use [Reactive Feign client](https://github.com/PlaytikaOSS/feign-reactive) to make the calls and wrap it in Hysterix 
+or creating a boot with client beans that can be imported to other projects.
+
+* Move Spring Boot configuration over to either Git or Hashicorp Vault
+
+* Setup Eureka
+
+* Implement micro frontend (React) that also get pushed to Docker-Hub
+
