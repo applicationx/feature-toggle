@@ -37,14 +37,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      # Setup Gradle as buildtool
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      # Setup Gradle as buildtool
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
       # Runs a single command using the runners shell
       - name: Build
         run: ./gradlew clean assemble
@@ -79,4 +71,7 @@ jobs:
         with:
           context: ./app/docker
           push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/${{ steps.project-name }}:${{ steps.project-version }}
+          tags: ${{secrets.DOCKER_USERNAME}}/${{ steps.project-name.outputs.stdout }}:${{ steps.project-version.outputs.stdout }}
+#  docker:
+#    runs-on: ubuntu-latest
+#    steps:
