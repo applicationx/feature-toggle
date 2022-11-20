@@ -13,17 +13,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    env:
-      GOOGLE_APPLICATION_CREDENTIALS: '${{ secrets.GOOGLE_CREDENTIALS }}'
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -33,24 +25,23 @@ jobs:
           java-version: '17'
 
       # Setup Gradle as build tool
-      - uses: actions/checkout@v3
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+#      - uses: actions/checkout@v3
+#      - name: Setup Gradle
+#        uses: gradle/gradle-build-action@v2
 
       # Runs a single command using the runners shell
       - name: Build
-        run: ./gradlew clean assemble
+        run: ${{github.workspace}}/gradlew clean assemble
 
-      # Runs a set of commands using the runners shell
+
       - name: Test
-        run: ./gradlew test
+        run: ${{github.workspace}}/gradlew test
 
       - id: auth
         name:  Authenticate to Google Cloud
         uses: google-github-actions/auth@v0
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-
 
       - name: Get Project Name
         id: project-name
