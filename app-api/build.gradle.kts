@@ -8,8 +8,14 @@ plugins {
 
 dependencies {
     implementation("io.projectreactor:reactor-core")
-
+    testImplementation("com.github.blocoio:faker:1.2.9")
 }
+
+tasks.register<Jar>("testJar") {
+    archiveBaseName.set("${project.name}-test")
+    from(project.the<SourceSetContainer>()["test"].output)
+}
+tasks.getByName("jar").dependsOn("testJar")
 
 publishing {
     repositories {
@@ -24,11 +30,12 @@ publishing {
 
     publications {
         create<MavenPublication>("maven") {
-            groupId = "nu.handlar.toggle"
-            artifactId = "app-api"
-            version = "1.0.0-SNAPSHOT"
-
+            from(components["java"])
+        }
+        create<MavenPublication>("mavenTest") {
+            artifactId = "${project.name}-test"
             from(components["java"])
         }
     }
 }
+

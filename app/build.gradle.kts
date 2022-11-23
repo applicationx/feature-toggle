@@ -18,7 +18,9 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    testImplementation("com.github.blocoio:faker:1.2.9")
+
+    implementation("org.springdoc:springdoc-openapi-webflux-ui:1.4.3")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 }

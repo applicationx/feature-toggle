@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.validation.Valid;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,7 @@ public class FeaturesController {
 				.map(mappers::toApi);
 	}
 
+
 	@GetMapping(path = "{id}")
 	public Mono<ApiFeature> getFeature(@PathVariable("id") String id) {
 		return domain.findById(id)
@@ -51,6 +53,7 @@ public class FeaturesController {
 	@GetMapping(path = "{id}/enabled")
 	public Mono<Boolean> isEnabled(@PathVariable("id") String id) {
 		return domain.findById(id)
+				.cache()
 				.map(Feature::getEnabled);
 	}
 
