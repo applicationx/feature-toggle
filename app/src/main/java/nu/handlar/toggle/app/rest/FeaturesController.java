@@ -1,10 +1,9 @@
-package nu.handlar.toggle.rest.endpoint;
+package nu.handlar.toggle.app.rest;
 
 import java.util.Objects;
 
 import javax.validation.Valid;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import nu.handlar.toggle.rest.config.RestMappers;
-import nu.handlar.toggle.rest.model.ApiCreateFeature;
-import nu.handlar.toggle.rest.model.ApiFeature;
-import nu.handlar.toggle.rest.model.ApiUpdateFeature;
-import nu.handlar.toggle.app.api.model.Feature;
-import nu.handlar.toggle.app.api.service.FeatureService;
+import nu.handlar.toggle.app.mapper.RestMappers;
+import nu.handlar.toggle.rest.api.ApiCreateFeature;
+import nu.handlar.toggle.rest.api.ApiFeature;
+import nu.handlar.toggle.rest.api.ApiUpdateFeature;
+import nu.handlar.toggle.app.model.domain.Feature;
+import nu.handlar.toggle.app.model.domain.FeatureService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

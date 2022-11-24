@@ -3,7 +3,7 @@ package nu.handlar.toggle.app.config;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
-import nu.handlar.toggle.app.api.model.Feature;
+import nu.handlar.toggle.app.model.domain.Feature;
 import nu.handlar.toggle.app.mapper.FeatureDaoMapper;
 import nu.handlar.toggle.app.mapper.FeatureMapper;
 import nu.handlar.toggle.app.model.dao.FeatureDao;

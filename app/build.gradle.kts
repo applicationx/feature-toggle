@@ -9,7 +9,6 @@ plugins {
 
 dependencies {
     implementation(project(":app-api"))
-    implementation(project(":rest"))
 
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -18,11 +17,13 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("jakarta.validation:jakarta.validation-api")
 
     implementation("org.springdoc:springdoc-openapi-webflux-ui:1.4.3")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
+    testImplementation("com.github.blocoio:faker:1.2.9")
 }
 
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {

@@ -8,9 +8,9 @@ plugins {
 
 dependencies {
     implementation("io.projectreactor:reactor-core")
+    implementation("jakarta.validation:jakarta.validation-api")
     testImplementation("com.github.blocoio:faker:1.2.9")
 }
-
 tasks.register<Jar>("testJar") {
     archiveBaseName.set("${project.name}-test")
     from(project.the<SourceSetContainer>()["test"].output)
@@ -34,7 +34,7 @@ publishing {
         }
         create<MavenPublication>("mavenTest") {
             artifactId = "${project.name}-test"
-            from(components["java"])
+            artifact(tasks.getByName("testJar"))
         }
     }
 }

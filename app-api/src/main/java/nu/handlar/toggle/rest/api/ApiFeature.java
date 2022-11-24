@@ -1,4 +1,4 @@
-package nu.handlar.toggle.rest.model;
+package nu.handlar.toggle.rest.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

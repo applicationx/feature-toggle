@@ -1,16 +1,13 @@
-package nu.handlar.toggle.rest.config;
+package nu.handlar.toggle.app.mapper;
 
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
-import nu.handlar.toggle.app.api.model.Feature;
-import nu.handlar.toggle.rest.mapper.ApiCreateFeatureMapper;
-import nu.handlar.toggle.rest.mapper.ApiFeatureMapper;
-import nu.handlar.toggle.rest.mapper.DomainFeatureMapper;
-import nu.handlar.toggle.rest.mapper.factory.FeatureFactory;
-import nu.handlar.toggle.rest.model.ApiCreateFeature;
-import nu.handlar.toggle.rest.model.ApiFeature;
-import nu.handlar.toggle.rest.model.ApiUpdateFeature;
+import nu.handlar.toggle.app.model.domain.Feature;
+import nu.handlar.toggle.app.mapper.factory.FeatureFactory;
+import nu.handlar.toggle.rest.api.ApiCreateFeature;
+import nu.handlar.toggle.rest.api.ApiFeature;
+import nu.handlar.toggle.rest.api.ApiUpdateFeature;
 
 @Component
 @Data
@@ -20,8 +17,7 @@ public class RestMappers {
 
 	private final FeatureFactory featureFactory;
 
-	private final DomainFeatureMapper domainFeatureMapper;
-
+	private final FeatureMapper featureMapper;
 
 	public Feature toDomain(ApiFeature api) {
 		return apiFeatureMapper.toDomain(api);
@@ -32,7 +28,7 @@ public class RestMappers {
 	}
 
 	public ApiFeature toApi(Feature domain) {
-		return domainFeatureMapper.toApi(domain);
+		return featureMapper.toApi(domain);
 	}
 
 	public Feature create(String id, ApiUpdateFeature apiUpdateFeature) {

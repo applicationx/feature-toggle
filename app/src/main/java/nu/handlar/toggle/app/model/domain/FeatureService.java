@@ -1,6 +1,5 @@
-package nu.handlar.toggle.app.api.service;
+package nu.handlar.toggle.app.model.domain;
 
-import nu.handlar.toggle.app.api.model.Feature;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

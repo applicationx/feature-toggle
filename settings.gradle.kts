@@ -13,4 +13,4 @@ gradleEnterprise {
 }
 
 rootProject.name = "feature-toggle"
-include("app", "app-api", "rest")
+include("app", "app-api")

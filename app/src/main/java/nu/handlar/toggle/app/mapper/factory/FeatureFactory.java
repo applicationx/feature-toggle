@@ -1,9 +1,9 @@
-package nu.handlar.toggle.rest.mapper.factory;
+package nu.handlar.toggle.app.mapper.factory;
 
 import org.mapstruct.Mapper;
 
-import nu.handlar.toggle.app.api.model.Feature;
-import nu.handlar.toggle.rest.model.ApiUpdateFeature;
+import nu.handlar.toggle.app.model.domain.Feature;
+import nu.handlar.toggle.rest.api.ApiUpdateFeature;
 
 @Mapper(componentModel = "spring")
 public interface FeatureFactory {

@@ -1,4 +1,4 @@
-package nu.handlar.toggle.app.api.model;
+package nu.handlar.toggle.app.model.domain;
 
 import io.bloco.faker.Faker;
 
