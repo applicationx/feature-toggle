@@ -2,13 +2,13 @@ plugins {
     id("se.handlar.toggle.java-library-conventions")
     id("io.spring.dependency-management")
     id("maven-publish")
-    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.2.0"
 }
 
 
 dependencies {
     implementation("io.projectreactor:reactor-core")
     implementation("jakarta.validation:jakarta.validation-api")
+    // Test
     testImplementation("com.github.blocoio:faker:1.2.9")
 }
 tasks.register<Jar>("testJar") {
@@ -20,10 +20,22 @@ tasks.getByName("jar").dependsOn("testJar")
 publishing {
     repositories {
         maven {
-            val snapshotURL ="artifactregistry://europe-north1-maven.pkg.dev/upbeat-arch-369008/appx-labs-maven-snapshot"
-            val releaseURL = "artifactregistry://europe-north1-maven.pkg.dev/upbeat-arch-369008/appx-labs-maven-release"
             val version: String by project
-            url = uri(if (version.endsWith("SNAPSHOT")) snapshotURL else releaseURL)
+            when (version.endsWith("SNAPSHOT")) {
+                true -> {
+                    name = "nexus-snapshots"
+                    url = uri(properties["nexusSnapshots"].toString())
+                }
+                false -> {
+                    name = "nexus-releases"
+                    url = uri(properties["nexusReleases"].toString())
+                }
+            }
+            logger.log(org.gradle.api.logging.LogLevel.WARN, "${url}")
+            credentials {
+                username = properties["nexusUsername"].toString()
+                password = properties["nexusPassword"].toString()
+            }
         }
     }
 

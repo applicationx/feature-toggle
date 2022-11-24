@@ -13,4 +13,6 @@ public interface FeatureService {
 	Mono<Feature> update(Feature feature);
 
 	Mono<Feature> findById(String id);
+
+	Flux<Feature> findByIdLike(String id);
 }

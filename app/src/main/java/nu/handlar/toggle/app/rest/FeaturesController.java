@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -72,6 +73,12 @@ public class FeaturesController {
 	@PutMapping(path = "/{id}")
 	public Mono<ApiFeature> update(@PathVariable("id") String id, @RequestBody ApiUpdateFeature apiUpdateFeature) {
 		return domain.update(mappers.create(id, apiUpdateFeature))
+				.map(mappers::toApi);
+	}
+
+	@GetMapping("/search/findByIdLike")
+	public Flux<ApiFeature> findByIdLike(@RequestParam("id") String id) {
+		return domain.findByIdLike(id)
 				.map(mappers::toApi);
 	}
 }

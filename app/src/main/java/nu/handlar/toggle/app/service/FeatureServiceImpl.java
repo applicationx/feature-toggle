@@ -63,4 +63,10 @@ public class FeatureServiceImpl implements FeatureService {
 		return repository.findById(id)
 				.map(mappers::toDomain);
 	}
+
+	@Override
+	public Flux<Feature> findByIdLike(String id) {
+		return repository.findByIdLike(id)
+				.map(mappers::toDomain);
+	}
 }

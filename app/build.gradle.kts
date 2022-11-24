@@ -3,8 +3,6 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 plugins {
     id("se.handlar.toggle.java-application-conventions")
     id("org.springframework.boot")
-    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.2.0"
-
 }
 
 dependencies {
