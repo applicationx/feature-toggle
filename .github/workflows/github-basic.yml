@@ -59,7 +59,7 @@ jobs:
       - name: Nexus Repo Publish Artifact
         uses: sonatype-nexus-community/nexus-repo-github-action@master
         with:
-          serverUrl: https://nexus.appx-labs.com/repository
+          serverUrl: https://nexus.appx-labs.com
           username: ${{ secrets.NEXUS_USERNAME }}
           password: ${{ secrets.NEXUS_PASSWORD }}
           format: maven2
@@ -71,7 +71,7 @@ jobs:
       - name: Nexus Repo Publish TestArtifact
         uses: sonatype-nexus-community/nexus-repo-github-action@master
         with:
-          serverUrl: https://nexus.appx-labs.com/repository
+          serverUrl: https://nexus.appx-labs.com
           username: ${{ secrets.NEXUS_USERNAME }}
           password: ${{ secrets.NEXUS_PASSWORD }}
           format: maven2
