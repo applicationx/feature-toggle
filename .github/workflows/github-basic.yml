@@ -64,7 +64,7 @@ jobs:
           password: ${{ secrets.NEXUS_PASSWORD }}
           format: maven2
           repository: maven-releases
-          coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }} version=${{ steps.project-version.outputs.VERSION_NAME }}
+          coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }} version=1.0.0 #version=${{ steps.project-version.outputs.VERSION_NAME }}
           assets: extension=jar
           filename: app-api/build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-${{ steps.project-version.outputs.VERSION_NAME }}.jar
 
@@ -76,7 +76,7 @@ jobs:
           password: ${{ secrets.NEXUS_PASSWORD }}
           format: maven2
           repository: maven-releases
-          coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }}-test version=${{ steps.project-version.outputs.VERSION_NAME }}
+          coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }}-test version=1.0.0 #version=${{ steps.project-version.outputs.VERSION_NAME }}
           assets: extension=jar
           filename: app-api/build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-test-${{ steps.project-version.outputs.VERSION_NAME }}.jar
 
