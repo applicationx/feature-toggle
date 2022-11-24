@@ -11,8 +11,11 @@ dependencies {
     // Test
     testImplementation("com.github.blocoio:faker:1.2.9")
 }
+tasks.getByName<Jar>("jar") {
+    archiveBaseName.set("${parent?.name}")
+}
 tasks.register<Jar>("testJar") {
-    archiveBaseName.set("${project.name}-test")
+    archiveBaseName.set("${parent?.name}-test")
     from(project.the<SourceSetContainer>()["test"].output)
 }
 tasks.getByName("jar").dependsOn("testJar")
@@ -31,7 +34,6 @@ publishing {
                     url = uri(properties["nexusReleases"].toString())
                 }
             }
-            logger.log(org.gradle.api.logging.LogLevel.WARN, "${url}")
             credentials {
                 username = properties["nexusUsername"].toString()
                 password = properties["nexusPassword"].toString()
@@ -42,10 +44,11 @@ publishing {
 
     publications {
         create<MavenPublication>("maven") {
+            artifactId = "${parent?.name}"
             from(components["java"])
         }
         create<MavenPublication>("mavenTest") {
-            artifactId = "${project.name}-test"
+            artifactId = "${parent?.name}-test"
             artifact(tasks.getByName("testJar"))
         }
     }
