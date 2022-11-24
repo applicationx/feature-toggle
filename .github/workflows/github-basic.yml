@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-#    branches: [ "main" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -24,11 +24,6 @@ jobs:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
 
-      # Setup Gradle as build tool
-#      - uses: actions/checkout@v3
-#      - name: Setup Gradle
-#        uses: gradle/gradle-build-action@v2
-
       # Runs a single command using the runners shell
       - name: Build
         run: ${{github.workspace}}/gradlew clean assemble
@@ -36,13 +31,6 @@ jobs:
 
       - name: Test
         run: ${{github.workspace}}/gradlew test
-
-#      - id: auth
-#        name:  Authenticate to Google Cloud
-#        uses: google-github-actions/auth@v0
-#        with:
-#          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-
 
   maven:
     runs-on: ubuntu-latest
@@ -78,7 +66,7 @@ jobs:
           repository: maven-releases
           coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }} version=${{ steps.project-version.outputs.VERSION_NAME }}
           assets: extension=jar
-          filename: ./build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-${{ steps.project-version.outputs.VERSION_NAME }}.jar
+          filename: build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-${{ steps.project-version.outputs.VERSION_NAME }}.jar
 
       - name: Nexus Repo Publish TestArtifact
         uses: sonatype-nexus-community/nexus-repo-github-action@master
@@ -90,7 +78,7 @@ jobs:
           repository: maven-releases
           coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }}-test version=${{ steps.project-version.outputs.VERSION_NAME }}
           assets: extension=jar
-          filename: ./build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-test-${{ steps.project-version.outputs.VERSION_NAME }}.jar
+          filename: build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-test-${{ steps.project-version.outputs.VERSION_NAME }}.jar
 
   docker:
     runs-on: ubuntu-latest
