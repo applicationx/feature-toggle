@@ -66,7 +66,7 @@ jobs:
           repository: maven-releases
           coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }} version=${{ steps.project-version.outputs.VERSION_NAME }}
           assets: extension=jar
-          filename: build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-${{ steps.project-version.outputs.VERSION_NAME }}.jar
+          filename: app-api/build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-${{ steps.project-version.outputs.VERSION_NAME }}.jar
 
       - name: Nexus Repo Publish TestArtifact
         uses: sonatype-nexus-community/nexus-repo-github-action@master
@@ -78,7 +78,7 @@ jobs:
           repository: maven-releases
           coordinates: groupId=${{ steps.project-name.outputs.PROJECT_NAME }} artifactId=${{ steps.project-name.outputs.PROJECT_NAME }}-test version=${{ steps.project-version.outputs.VERSION_NAME }}
           assets: extension=jar
-          filename: build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-test-${{ steps.project-version.outputs.VERSION_NAME }}.jar
+          filename: app-api/build/libs/${{ steps.project-name.outputs.PROJECT_NAME }}-test-${{ steps.project-version.outputs.VERSION_NAME }}.jar
 
   docker:
     runs-on: ubuntu-latest
