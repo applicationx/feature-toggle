@@ -1,0 +1,23 @@
+version: '3.1'
+# https://docs.lenses.io/5.0/tools/box/
+# https://docs.lenses.io/4.1/installation/docker/
+services:
+  lenses:
+    container_name: lenses
+    image: lensesio/box
+    restart: always
+    ports:
+      - 3030:3030
+      - 9092:9092
+      - 2181:2181
+      - 8082:8081
+      - 9200:9200
+    environment:
+      - ADV_HOST=localhost
+    volumes:
+      - /licenses.json:/mnt/secrets/license.json
+    networks:
+      dev:
+networks:
+  dev:
+    external: true

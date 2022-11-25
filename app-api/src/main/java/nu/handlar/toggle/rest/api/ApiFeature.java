@@ -16,7 +16,6 @@ public class ApiFeature implements HasIdType<String> {
 	@NonNull
 	private String id;
 	private String description;
-	@NonNull
 	private boolean enabled;
 
 	public Optional<String> getDescription() {

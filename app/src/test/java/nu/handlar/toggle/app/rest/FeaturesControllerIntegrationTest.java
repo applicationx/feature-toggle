@@ -49,10 +49,11 @@ class FeaturesControllerIntegrationTest {
 		webTestClient.get().uri("/features/" + expected.getId())
 				.accept(MediaType.APPLICATION_JSON)
 				.exchange()
-				.expectStatus().isOk()
-				.expectBody()
-				.jsonPath("$.id").isEqualTo(expected.getId())
-				.jsonPath("$.description").isEqualTo(expected.getDescription())
-				.jsonPath("$.enabled").isEqualTo(expected.getEnabled());
+				.expectAll(
+						res -> res.expectStatus().isOk(),
+						res -> res.expectBody()
+								.jsonPath("$.id").isEqualTo(expected.getId())
+								.jsonPath("$.description").isEqualTo(expected.getDescription())
+								.jsonPath("$.enabled").isEqualTo(expected.getEnabled()));
 	}
 }
