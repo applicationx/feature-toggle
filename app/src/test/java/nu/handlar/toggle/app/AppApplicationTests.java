@@ -8,6 +8,8 @@ class AppApplicationTests {
 
 	@Test
 	void contextLoads() {
+	// Get spring context
+
 	}
 
 }

@@ -28,7 +28,6 @@ jobs:
       - name: Build
         run: ${{github.workspace}}/gradlew clean assemble
 
-
       - name: Test
         run: ${{github.workspace}}/gradlew test
 
@@ -40,6 +39,8 @@ jobs:
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
+
+
 
       - name: Build
         run: ${{github.workspace}}/gradlew build -x test
@@ -55,6 +56,7 @@ jobs:
       - name: Get Project Version
         id: project-version
         run: echo "::set-output name=VERSION_NAME::$(${{github.workspace}}/gradlew properties --no-daemon --console=plain |grep '^version:' |awk '{printf $2}')"
+
 
       - name: Nexus Repo Publish Artifact
         uses: sonatype-nexus-community/nexus-repo-github-action@master
