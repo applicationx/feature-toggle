@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import nu.handlar.toggle.rest.api.HasIdType;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = {"id"})
 @Builder
 @Document
-public class FeatureDao {
+public class FeatureDao  implements HasIdType<String> {
 	@MongoId
 	private String id;
 	private String description;

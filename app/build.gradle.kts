@@ -16,14 +16,14 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("jakarta.validation:jakarta.validation-api")
-
     implementation("org.springdoc:springdoc-openapi-webflux-ui:1.4.3")
-
+    implementation("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:testcontainers:1.17.6")
     testImplementation("org.testcontainers:junit-jupiter:1.17.6")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testImplementation("org.testcontainers:mongodb:1.17.6")
+    testImplementation("org.testcontainers:kafka:1.17.6")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("com.github.blocoio:faker:1.2.9")
 }
